@@ -120,6 +120,16 @@ from app import app
 'you-are-beautiful'
 ```
 
+#### 表单Flask-WTF
+
+安装
+
+```python
+pip install flask-wtf
+```
+
+
+
 
 
 
