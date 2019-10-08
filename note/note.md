@@ -87,6 +87,39 @@ def index():
     return render_template("index.html", title="Home", user=user, posts=posts)
 ```
 
+#### 配置方式
+
+用Config类来管理配置，增加配置的可扩展性（关注点分离原则）
+
+```python
+# config.py
+import os
+
+
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRETE_KEY') or 'you-are-beautiful'
+    
+# __init__.py
+from flask import Flask
+from config import Config
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+from app import routes
+
+# microblog.py
+from app import app
+```
+
+验证配置生效
+
+```bash
+>>> from microblog import app
+>>> app.config["SECRET_KEY"]
+'you-are-beautiful'
+```
+
 
 
 
