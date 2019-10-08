@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}  {# if语句 #}
+        <title>{{ title }} - flask-mega</title>  {# render_template传进来的title变量 #}
+    {% else %}
+        <title>Oh my - flask-mega</title>
+    {% endif %}
+</head>
+<body>
+<div id="container">
+    <div>flask-mega: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

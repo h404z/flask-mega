@@ -30,9 +30,10 @@ $ pip freeze > requirements.txt
 
 #### Jinja
 
-**变量、if、for、注释**的用法
+**变量、if、for、注释、继承**的用法
 
 ```jinja2
+{# base.html #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,14 +46,26 @@ $ pip freeze > requirements.txt
 </head>
 <body>
 <div id="container">
+    <div>flask-mega: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
+```
+
+```jinja2
+{# index.html #}
+{% extends "base.html" %}
+{% block content %}
     <h1>hello, {{ user.username }}!</h1>
 
     {% for post in posts %}  {# for语句 #}
         <div><p>{{ post.author.username }} says:<b>{{ post.body }}</b></p></div>
     {% endfor %}
-</div>
-</body>
-</html>
+
+{% endblock %}
 ```
 
 ```python
@@ -73,6 +86,8 @@ def index():
     ]
     return render_template("index.html", title="Home", user=user, posts=posts)
 ```
+
+
 
 
 
