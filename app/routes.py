@@ -10,7 +10,18 @@ from app import app
 @app.route("/index")
 def index():
     user = {"username": "NickHo"}
-    return render_template("index.html", title="Home", user=user)
+
+    posts = [
+        {
+            "author": {"username": "Vicky"},
+            "body": "I want to go to Disneyland!"
+        },
+        {
+            "author": {"username": "Hayden"},
+            "body": "I'm a little human!"
+        }
+    ]
+    return render_template("index.html", title="Home", user=user, posts=posts)
 
 
 if __name__ == '__main__':
