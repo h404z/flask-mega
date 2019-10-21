@@ -17,6 +17,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+login.login_view = "login"  # Flask-Login需要知道处理登录的视图函数是什么
 
 from app import routes, models
 
